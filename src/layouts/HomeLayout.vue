@@ -160,6 +160,6 @@ export default {
 
 <style lang="stylus">
 safe
-  margin-top constant(safe-area-inset-top)!important
-  margin-top env(safe-area-inset-top)!important
+  padding-top constant(safe-area-inset-top)!important
+  padding-top env(safe-area-inset-top)!important
 </style>
