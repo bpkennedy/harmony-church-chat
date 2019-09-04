@@ -158,7 +158,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
 safe
   // for your app's header
   padding-top constant(safe-area-inset-top) // for iOS 11.0
