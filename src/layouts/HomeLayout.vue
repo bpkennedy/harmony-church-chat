@@ -160,7 +160,6 @@ export default {
 
 <style lang="stylus">
 safe
-  // for your app's header
-  margin-top constant(safe-area-inset-top)!important // for iOS 11.0
-  margin-top env(safe-area-inset-top)!important // for iOS 11.2 +
+  margin-top constant(safe-area-inset-top)!important
+  margin-top env(safe-area-inset-top)!important
 </style>
