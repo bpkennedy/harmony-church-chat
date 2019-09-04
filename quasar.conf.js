@@ -98,13 +98,18 @@ module.exports = function (ctx) {
     pwa: {
       // workboxPluginMode: 'InjectManifest',
       // workboxOptions: {}, // only for NON InjectManifest
+      metaVariables: {
+        appleMobileWebAppCapable: 'yes',
+        appleMobileWebAppStatusBarStyle: 'black-translucent',
+        msapplicationTileColor: '#027BE3'
+      },
       manifest: {
         // name: 'Harmony Chat',
         // short_name: 'Harmony Chat',
         // description: 'A chat application for harmony church members',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#ffffff',
+        background_color: '#027BE3',
         theme_color: '#027be3',
         icons: [
           {
