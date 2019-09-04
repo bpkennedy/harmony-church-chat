@@ -104,10 +104,10 @@ module.exports = function (ctx) {
         msapplicationTileColor: '#027BE3'
       },
       manifest: {
-        // name: 'Harmony Chat',
-        // short_name: 'Harmony Chat',
-        // description: 'A chat application for harmony church members',
-        display: 'standalone',
+        name: 'Harmony Chat',
+        short_name: 'Harmony Chat',
+        description: 'A chat application for harmony church members',
+        display: 'fullscreen',
         orientation: 'portrait',
         background_color: '#027BE3',
         theme_color: '#027be3',
