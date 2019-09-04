@@ -159,7 +159,7 @@ export default {
 </script>
 
 <style lang="stylus">
-safe
+ .safe
   padding-top constant(safe-area-inset-top)!important
   padding-top env(safe-area-inset-top)!important
 </style>
