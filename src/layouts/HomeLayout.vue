@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="safe">
       <q-toolbar>
         <q-btn
           flat
@@ -159,4 +159,8 @@ export default {
 </script>
 
 <style>
+safe
+  // for your app's header
+  padding-top constant(safe-area-inset-top) // for iOS 11.0
+  padding-top env(safe-area-inset-top) // for iOS 11.2 +
 </style>
