@@ -1,6 +1,9 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="safe">
+    <q-header
+      elevated
+      class="safe"
+    >
       <q-toolbar>
         <q-btn
           flat
@@ -159,7 +162,8 @@ export default {
 </script>
 
 <style lang="stylus">
- .safe
-  padding-top constant(safe-area-inset-top)!important
-  padding-top env(safe-area-inset-top)!important
+  .safe {
+    padding-top: constant(safe-area-inset-top)!important;
+    padding-top: env(safe-area-inset-top)!important;
+  }
 </style>

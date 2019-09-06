@@ -3,6 +3,10 @@
 
 module.exports = function (ctx) {
   return {
+    sourceFiles: {
+      router: 'src/router',
+      store: 'src/store',
+    },
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     boot: [
