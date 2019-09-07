@@ -37,6 +37,7 @@ module.exports = function (ctx) {
       // all: true, // --- includes everything; for dev only!
 
       components: [
+        'QAvatar',
         'QLayout',
         'QHeader',
         'QDrawer',
@@ -51,7 +52,7 @@ module.exports = function (ctx) {
         'QList',
         'QItem',
         'QItemSection',
-        'QItemLabel'
+        'QItemLabel',
       ],
 
       directives: [

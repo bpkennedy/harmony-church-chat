@@ -63,7 +63,6 @@ export default {
         await this.$auth.signInWithEmailAndPassword(this.email, this.password)
         this.$router.push('/')
       } catch (error) {
-        console.log(error)
         this.$q.notify({
           color: 'negative',
           icon: 'report_problem',

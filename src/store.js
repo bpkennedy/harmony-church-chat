@@ -1,23 +1,40 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { getOne } from './boot/firebase'
 
 Vue.use(Vuex)
 
-// export const SET_WALL_ACTION = 'SET_WALL_ACTION'
-// export const SET_WALL_MUTATION = 'SET_WALL_MUTATION'
+export const USER_AUTH_ACTION = 'USER_AUTH'
+export const USER_UNAUTH_ACTION = 'USER_UNAUTH'
+export const LOAD_USER_PROFILE_ACTION = 'LOAD_USER_PROFILE_ACTION'
+
+const USER_MUTATION = 'USER_MUTATION'
+const USER_PROFILE_MUTATION = 'USER_PROFILE_MUTATION'
 
 export default new Vuex.Store({
   state: {
-    // wall: true,
+    user: null,
+    profile: null,
   },
   actions: {
-    // [SET_WALL_ACTION]({ state, commit }, status) {
-    //   commit(SET_WALL_MUTATION, status)
-    // }
+    [USER_AUTH_ACTION]({ state, commit }, user) {
+      commit(USER_MUTATION, user)
+    },
+    [USER_UNAUTH_ACTION]({ state, commit }) {
+      commit(USER_MUTATION, null)
+      commit(USER_PROFILE_MUTATION, null)
+    },
+    async [LOAD_USER_PROFILE_ACTION]({ state, commit }) {
+      const userProfile = await getOne({ id: state.user.uid, collection: 'users' })
+      commit(USER_PROFILE_MUTATION, userProfile)
+    },
   },
   mutations: {
-    // [SET_WALL_MUTATION](state, status) {
-    //   Vue.set(state, 'wall', status)
-    // }
+    [USER_MUTATION](state, user) {
+      Vue.set(state, 'user', user)
+    },
+    [USER_PROFILE_MUTATION](state, userProfile) {
+      Vue.set(state, 'profile', userProfile)
+    }
   }
 })
