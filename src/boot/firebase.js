@@ -1,4 +1,4 @@
-import Firebase from 'firebase/app'
+import Firebase from 'firebase'
 import 'firebase/auth'
 
 export default async ({ Vue }) => {
@@ -11,6 +11,6 @@ export default async ({ Vue }) => {
     messagingSenderId: '486136128526',
     appId: '1:486136128526:web:01d8fa8f0f716f62'
   })
-  Vue.prototype.$db = Firebase
   Vue.prototype.$auth = Firebase.auth()
+  Vue.prototype.$db = Firebase.firestore()
 }
