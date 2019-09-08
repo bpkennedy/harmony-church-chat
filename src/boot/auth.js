@@ -25,6 +25,22 @@ export const login = async (email, password) => {
   }
 }
 
+export const logout = async () => {
+  try {
+    await Auth.signOut()
+  } catch (error) {
+    Notify.create({
+      color: 'negative',
+      icon: 'report_problem',
+      message: error.message,
+      position: 'top',
+      multiLine: true,
+      actions: null,
+      buttonColor: 'white',
+    })
+  }
+}
+
 export default async ({ store }) => {
   Auth = Firebase.auth()
   Auth.onAuthStateChanged(user => {

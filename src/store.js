@@ -2,11 +2,12 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from './router'
 import { getOne } from './boot/db'
-import { login } from './boot/auth'
+import { login, logout } from './boot/auth'
 
 Vue.use(Vuex)
 
 export const USER_SIGNIN_ACTION = 'USER_SIGNIN_ACTION'
+export const USER_SIGNOUT_ACTION = 'USER_SIGNOUT_ACTION'
 export const USER_AUTH_ACTION = 'USER_AUTH'
 export const USER_UNAUTH_ACTION = 'USER_UNAUTH'
 export const LOAD_USER_PROFILE_ACTION = 'LOAD_USER_PROFILE_ACTION'
@@ -28,12 +29,16 @@ export default new Vuex.Store({
       await login(email, password)
       router.push('/')
     },
+    [USER_SIGNOUT_ACTION]({ state, commit }) {
+      logout()
+    },
     [USER_AUTH_ACTION]({ state, commit }, user) {
       commit(USER_MUTATION, user)
     },
     [USER_UNAUTH_ACTION]({ state, commit }) {
       commit(USER_MUTATION, null)
       commit(USER_PROFILE_MUTATION, null)
+      router.push('/login')
     },
     async [LOAD_USER_PROFILE_ACTION]({ state, commit }) {
       const userProfile = await getOne({ id: state.user.uid, collection: 'users' })

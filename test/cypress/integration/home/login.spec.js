@@ -37,4 +37,13 @@ describe('Login', () => {
     cy.contains('pass123').should('not.exist')
   })
 
+  it('should logout', () => {
+    cy.get('body').contains('Login').click()
+    cy.getLabel('Your email *').click().type('test@email.com')
+    cy.getLabel('Your password *').click().type('pass123')
+    cy.get('body').contains('Submit').click()
+    cy.get('body').contains('Chats').should('exist')
+    cy.get('body').contains('Login').should('not.exist')
+  })
+
 })
