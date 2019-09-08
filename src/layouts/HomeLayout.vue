@@ -19,7 +19,7 @@
         >
           <img :src="profile.profile_pic_url">
         </q-avatar>
-        <q-toolbar-title>Chats</q-toolbar-title>
+        <q-toolbar-title>{{ this.$route.name }}</q-toolbar-title>
       </q-toolbar>
     </q-header>
 

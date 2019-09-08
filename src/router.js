@@ -11,7 +11,7 @@ const routes = [
       requiresAuth: false
     },
     children: [
-      { path: '', component: () => import('pages/Home.vue') }
+      { path: '', name: 'Chats', component: () => import('pages/Chats.vue') }
     ]
   },
   {
@@ -21,7 +21,7 @@ const routes = [
       requiresAuth: true
     },
     children: [
-      { path: '', component: () => import('pages/Secret.vue') }
+      { path: '', name: 'Secret', component: () => import('pages/Secret.vue') }
     ]
   },
   {
@@ -31,7 +31,7 @@ const routes = [
       requiresAuth: false
     },
     children: [
-      { path: '', component: () => import('pages/Login.vue') }
+      { path: '', name: 'Login', component: () => import('pages/Login.vue') }
     ]
   }
 ]

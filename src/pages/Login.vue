@@ -40,10 +40,9 @@
   </q-page>
 </template>
 
-<style>
-</style>
-
 <script>
+import { USER_SIGNIN_ACTION } from '../store'
+
 function initialState() {
   return {
     email: '',
@@ -59,20 +58,10 @@ export default {
   },
   methods: {
     async onSubmit() {
-      try {
-        await this.$auth.signInWithEmailAndPassword(this.email, this.password)
-        this.$router.push('/')
-      } catch (error) {
-        this.$q.notify({
-          color: 'negative',
-          icon: 'report_problem',
-          message: error.message,
-          position: 'top',
-          multiLine: true,
-          actions: null,
-          buttonColor: 'white',
-        })
-      }
+      this.$store.dispatch(USER_SIGNIN_ACTION, {
+        email: this.email,
+        password: this.password
+      })
     },
     onReset() {
       Object.assign(this.$data, initialState())
@@ -80,3 +69,6 @@ export default {
   }
 }
 </script>
+
+<style>
+</style>
