@@ -1,9 +1,4 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-
-Vue.use(VueRouter)
-
-const routes = [
+export const routes = [
   {
     path: '/',
     component: () => import('layouts/HomeLayout.vue'),
@@ -43,25 +38,3 @@ if (process.env.MODE !== 'ssr') {
     component: () => import('pages/Error404.vue')
   })
 }
-
-const Router = new VueRouter({
-  mode: process.env.VUE_ROUTER_MODE,
-  routes,
-  scrollBehavior: () => ({ x: 0, y: 0 }),
-  base: process.env.VUE_ROUTER_BASE
-})
-
-Router.beforeEach((to, from, next) => {
-  const currentUser = Vue.prototype.$auth.currentUser
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (currentUser === null) {
-      return next({
-        path: '/login',
-        replace: true,
-      })
-    }
-  }
-  next()
-})
-
-export default Router

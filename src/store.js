@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { Notify } from 'quasar'
-import router from './router.js'
-import { getOne } from './boot/firebase'
+import router from './router'
+import { getOne } from './boot/db'
+import { login } from './boot/auth'
 
 Vue.use(Vuex)
 
@@ -25,20 +25,8 @@ export default new Vuex.Store({
         { value: email, type: 'string' },
         { value: password, type: 'string' },
       ])
-      try {
-        await Vue.prototype.$auth.signInWithEmailAndPassword(email, password)
-        router.push('/')
-      } catch (error) {
-        Notify.create({
-          color: 'negative',
-          icon: 'report_problem',
-          message: error.message,
-          position: 'top',
-          multiLine: true,
-          actions: null,
-          buttonColor: 'white',
-        })
-      }
+      await login(email, password)
+      router.push('/')
     },
     [USER_AUTH_ACTION]({ state, commit }, user) {
       commit(USER_MUTATION, user)
