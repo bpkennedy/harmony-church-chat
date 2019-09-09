@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    Chats here
+    People here
   </q-page>
 </template>
 

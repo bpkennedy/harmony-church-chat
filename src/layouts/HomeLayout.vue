@@ -32,6 +32,30 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <q-footer
+      v-if="profile"
+    >
+      <q-tabs>
+        <q-route-tab
+          icon="chat"
+          to="/chats"
+          exact
+          replace
+          aria-label="Chat Navigation"
+        >
+          Chats
+        </q-route-tab>
+        <q-route-tab
+          icon="people"
+          to="/people"
+          exact
+          replace
+          aria-label="People Navigation"
+        >
+          People
+        </q-route-tab>
+      </q-tabs>
+    </q-footer>
   </q-layout>
 </template>
 

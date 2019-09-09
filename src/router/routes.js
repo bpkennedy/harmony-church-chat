@@ -6,7 +6,27 @@ export const routes = [
       requiresAuth: false
     },
     children: [
+      { path: '', name: 'Home', component: () => import('pages/Home.vue') }
+    ]
+  },
+  {
+    path: '/chats',
+    component: () => import('layouts/HomeLayout.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    children: [
       { path: '', name: 'Chats', component: () => import('pages/Chats.vue') }
+    ]
+  },
+  {
+    path: '/people',
+    component: () => import('layouts/HomeLayout.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    children: [
+      { path: '', name: 'People', component: () => import('pages/People.vue') }
     ]
   },
   {
