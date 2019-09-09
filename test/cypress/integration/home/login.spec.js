@@ -2,8 +2,8 @@ import * as ctx from  '../../../../quasar.conf.js'
 
 describe('Login', () => {
   beforeEach(() => {
-    cy.visit('/')
     indexedDB.deleteDatabase('firebaseLocalStorageDb')
+    cy.visit('/')
   })
 
   it('should go to login page', () => {
