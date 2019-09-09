@@ -7,6 +7,8 @@
     >
       <q-input
         v-model="email"
+        outlined
+        :dense="false"
         label="Your email *"
         hint="Email address"
         type="email"
@@ -16,6 +18,8 @@
 
       <q-input
         v-model="password"
+        outlined
+        :dense="false"
         type="password"
         label="Your password *"
         lazy-rules

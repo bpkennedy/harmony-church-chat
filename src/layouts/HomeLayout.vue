@@ -16,11 +16,16 @@
         <q-avatar
           v-if="profile"
           rounded
+          aria-label="User Avatar"
           @click="showProfileOptions"
         >
           <img :src="profile.profile_pic_url">
         </q-avatar>
-        <q-toolbar-title>{{ this.$route.name }}</q-toolbar-title>
+        <q-toolbar-title
+          v-if="profile || this.$route.name === 'Login'"
+        >
+          {{ this.$route.name }}
+        </q-toolbar-title>
       </q-toolbar>
     </q-header>
 

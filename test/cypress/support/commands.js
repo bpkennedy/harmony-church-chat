@@ -11,6 +11,18 @@
 //
 //
 
+Cypress.Commands.add('login', (email, pass) => {
+  cy.getLabel('Your email *').click().type(email)
+  cy.getLabel('Your password *').click().type(pass)
+  cy.contains('Submit').click()
+})
+
+Cypress.Commands.add('logout', () => {
+  cy.contains('Login').should('not.exist')
+  cy.getLabel('User Avatar').click()
+  cy.contains('Logout').click()
+})
+
 Cypress.Commands.add('getLabel', label => {
   cy.get(`*[aria-label="${label}"]`)
 })
