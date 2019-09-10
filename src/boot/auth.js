@@ -1,6 +1,11 @@
 import Firebase from 'firebase/app'
 import 'firebase/auth'
-import { USER_AUTH_ACTION, USER_UNAUTH_ACTION, LOAD_USER_PROFILE_ACTION } from '../store'
+import {
+  USER_AUTH_ACTION,
+  USER_UNAUTH_ACTION,
+  LOAD_USER_PROFILE_ACTION,
+  GET_PEOPLE_ACTION
+} from '../store'
 import { genericError } from '../util'
 
 let Auth
@@ -32,6 +37,7 @@ export default async ({ store }) => {
     if (user) {
       store.dispatch(USER_AUTH_ACTION, user)
       store.dispatch(LOAD_USER_PROFILE_ACTION)
+      store.dispatch(GET_PEOPLE_ACTION)
     } else {
       if (initialStartup) {
         initialStartup = false

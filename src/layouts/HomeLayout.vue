@@ -6,7 +6,7 @@
     >
       <q-toolbar>
         <q-btn
-          v-if="this.$route.name !== 'Login' && !profile"
+          v-if="this.$route.name !== 'Login' && !isLoggedIn"
           color="white"
           text-color="black"
           label="Login"
@@ -14,7 +14,7 @@
         />
 
         <q-avatar
-          v-if="profile"
+          v-if="isLoggedIn"
           rounded
           aria-label="User Avatar"
           @click="showProfileOptions"
@@ -22,7 +22,7 @@
           <img :src="profile.profile_pic_url">
         </q-avatar>
         <q-toolbar-title
-          v-if="profile || this.$route.name === 'Login'"
+          v-if="isLoggedIn || this.$route.name === 'Login'"
         >
           {{ this.$route.name }}
         </q-toolbar-title>
@@ -33,7 +33,7 @@
       <router-view />
     </q-page-container>
     <q-footer
-      v-if="profile"
+      v-if="isLoggedIn"
     >
       <q-tabs>
         <q-route-tab
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex'
 import { openURL } from 'quasar'
 import { USER_SIGNOUT_ACTION } from '../store'
 
@@ -71,9 +72,12 @@ export default {
     }
   },
   computed: {
-    profile() {
-      return this.$store.state.profile
-    }
+    ...mapState([
+      'profile'
+    ]),
+    ...mapGetters([
+      'isLoggedIn',
+    ])
   },
   methods: {
     openURL,

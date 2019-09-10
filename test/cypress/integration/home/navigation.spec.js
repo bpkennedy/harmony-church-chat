@@ -12,14 +12,14 @@ describe('Navigation', () => {
     cy.contains('Home')
     cy.contains('People').should('exist')
 
+    cy.getLabel('People Navigation').click()
+    cy.contains('Brian Kennedy').should('exist')
+
     cy.getLabel('Chat Navigation').click()
-    cy.contains('Chats here').should('exist')
+    cy.contains('Brian Kennedy').should('not.exist')
 
     cy.getLabel('People Navigation').click()
-    cy.contains('People here').should('exist')
-
-    cy.getLabel('Chat Navigation').click()
-    cy.contains('Chats here').should('exist')
+    cy.contains('Brian Kennedy').should('exist')
   })
 
 })
