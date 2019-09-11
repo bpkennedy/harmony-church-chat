@@ -20,6 +20,16 @@ export const routes = [
     ]
   },
   {
+    path: '/chats/:id',
+    component: () => import('layouts/ConversationLayout.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    children: [
+      { path: '', name: 'Conversation', component: () => import('pages/Conversation.vue') }
+    ]
+  },
+  {
     path: '/people',
     component: () => import('layouts/HomeLayout.vue'),
     meta: {

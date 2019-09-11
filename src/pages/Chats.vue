@@ -6,6 +6,7 @@
         :key="chat.uid"
         v-ripple
         clickable
+        @click="goToConversation(chat.uid)"
       >
         <q-item-section
           avatar
@@ -45,6 +46,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import router from '../router'
 
 export default {
   name: 'PageIndex',
@@ -60,6 +62,9 @@ export default {
     ]),
   },
   methods: {
+    goToConversation(routeId) {
+      router.push('/chats/' + routeId)
+    },
     chatPictureUrl(chat) {
       if (chat.participants.length > 2) {
         return 'https://cdn1.iconfinder.com/data/icons/rounded-black-basic-ui/139/Profile_GroupFriend-RoundedBlack-512.png'
