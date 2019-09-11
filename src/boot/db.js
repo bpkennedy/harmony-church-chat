@@ -21,15 +21,30 @@ export const getOne = async ({ id, collection }) => {
 }
 
 export const getAll = async ({ collection }) => {
-  Vue.prototype.$tp([
-    { value: collection, type: 'string' },
-  ])
+  Vue.prototype.$tp([{ value: collection, type: 'string' }])
   const items = []
   const snapshot = await db.collection(collection).get()
   snapshot.forEach(doc => {
     items.push(doc.data())
   })
   return items
+}
+
+export const query = async ({ collection, queries }) => {
+  Vue.prototype.$tp([
+    { value: collection, type: 'string' },
+    { value: queries, type: 'array' },
+  ])
+  const results = []
+  let ref = db.collection(collection)
+  for (const { field, operator, value } of queries) {
+    ref.where(field, operator, value)
+  }
+  const snapshot = await ref.get()
+  snapshot.forEach(doc => {
+    results.push(doc.data())
+  })
+  return results
 }
 
 export const updateOne = async ({ id, collection, updateSet }) => {
@@ -45,9 +60,7 @@ export const updateOne = async ({ id, collection, updateSet }) => {
 }
 
 export const updateMultiple = async (refSetArray) => {
-  Vue.prototype.$tp([
-    { value: refSetArray, type: 'array' },
-  ])
+  Vue.prototype.$tp([{ value: refSetArray, type: 'array' }])
   await db.runTransaction(t => {
     for (const refSet of refSetArray) {
       t.update(db.collection(refSet.collection).doc(refSet.id), refSet.updateSet)

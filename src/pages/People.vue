@@ -32,12 +32,14 @@
 </style>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'PageIndex',
   computed: {
-    people() {
-      return this.$store.state.people
-    }
+    ...mapState([
+      'people'
+    ]),
   },
 }
 </script>

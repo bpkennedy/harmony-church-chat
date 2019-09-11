@@ -4,7 +4,8 @@ import {
   USER_AUTH_ACTION,
   USER_UNAUTH_ACTION,
   LOAD_USER_PROFILE_ACTION,
-  GET_PEOPLE_ACTION
+  GET_PEOPLE_ACTION,
+  LOAD_CHATS_ACTION
 } from '../store'
 import { genericError } from '../util'
 
@@ -38,6 +39,7 @@ export default async ({ store }) => {
       store.dispatch(USER_AUTH_ACTION, user)
       store.dispatch(LOAD_USER_PROFILE_ACTION)
       store.dispatch(GET_PEOPLE_ACTION)
+      store.dispatch(LOAD_CHATS_ACTION)
     } else {
       if (initialStartup) {
         initialStartup = false
