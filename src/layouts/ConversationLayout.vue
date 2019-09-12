@@ -2,26 +2,34 @@
   <q-layout view="lHh Lpr lFf">
     <q-header
       bordered
-      class="bg-white text-primary"
+      class="q-pa-md bg-white text-black"
     >
       <q-toolbar>
-        <q-toolbar-title class="text-center">
-          <q-item-section
-            avatar
-          >
-            <q-avatar>
-              <img :src="chatPictureUrl(chat)">
-            </q-avatar>
-          </q-item-section>
+        <q-btn
+          v-go-back="'/chats'"
+          flat
+          dense
+          class="q-mr-sm"
+        >
+          <q-icon name="arrow_back_ios" />
+          Back
+        </q-btn>
+        <q-item-section
+          avatar
+        >
+          <q-avatar>
+            <img src="https://www.whatsappprofiledpimages.com/wp-content/uploads/2018/07/best-profile-pic13-300x300.jpg">
+          </q-avatar>
+        </q-item-section>
 
-          <q-item-section>
-            <q-item-label
-              lines="1"
-            >
-              {{ chatUserDisplayName(chat) }}
-            </q-item-label>
-          </q-item-section>
-        </q-toolbar-title>
+        <q-item-section>
+          <q-item-label
+            lines="1"
+          >
+            <!-- {{ chatUserDisplayName(chat) }} -->
+            JimmehBoi
+          </q-item-label>
+        </q-item-section>
       </q-toolbar>
     </q-header>
 
@@ -93,7 +101,7 @@ export default {
           this.$store.dispatch(USER_SIGNOUT_ACTION)
         }
       })
-    }
+    },
   }
 }
 </script>
